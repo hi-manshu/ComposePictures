@@ -3,3 +3,4 @@ rootProject.name = "movies-compose"
 include ':core'
 include ':feature:login'
 include ':feature:landing'
+include ':feature:splash'

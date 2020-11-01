@@ -2,6 +2,7 @@ package com.himanshoe.login.ui.composable
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Text
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -15,6 +16,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.VectorAsset
 import androidx.compose.ui.text.TextStyle
@@ -30,6 +32,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.himanshoe.core.extension.fullScreen
+import com.himanshoe.core.extension.toColor
 import com.himanshoe.core.util.validator.isEmail
 import com.himanshoe.login.ui.LoginViewModel
 import java.util.*
@@ -37,13 +40,13 @@ import java.util.*
 @Composable
 fun LoginUI(viewModel: LoginViewModel) {
     Scaffold(
-        modifier = Modifier.fullScreen().padding(16.dp),
+
         bodyContent = {
 
             val emailState = remember { mutableStateOf(TextFieldValue()) }
             val passwordState = remember { mutableStateOf(TextFieldValue()) }
 
-            Column {
+            Column(modifier = Modifier.fullScreen().padding(16.dp)) {
                 Text(
                     text = "Skip",
                     modifier = Modifier.fillMaxWidth(),
@@ -51,6 +54,7 @@ fun LoginUI(viewModel: LoginViewModel) {
                     style = MaterialTheme.typography.body1
                 )
                 addSpace()
+
                 Text(
                     text = "Welcome to,\nPhoto Collector",
                     style = MaterialTheme.typography.h4
@@ -102,12 +106,16 @@ fun LoginUI(viewModel: LoginViewModel) {
             }
         },
         bottomBar = {
+
             Text(
                 text = "Made with ❤ in India",
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth().height(50.dp)
+                    .clip(RoundedCornerShape(topLeft = 40.dp, topRight = 40.dp))
+                    .background("4D73F6".toColor()).padding(top = 12.dp),
                 textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.h6.merge(
+                style = MaterialTheme.typography.body1.merge(
                     TextStyle(
+                        color = Color.White,
                         fontWeight = FontWeight.Bold
                     )
                 )
