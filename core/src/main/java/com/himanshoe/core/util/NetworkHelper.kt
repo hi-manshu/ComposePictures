@@ -1,4 +1,4 @@
-package com.roomiapp.core.util
+package com.himanshoe.core.util
 
 import android.content.Context
 import android.net.ConnectivityManager

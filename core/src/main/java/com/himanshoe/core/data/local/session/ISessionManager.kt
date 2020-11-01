@@ -1,7 +1,6 @@
-package com.roomiapp.core.data.local.session
+package com.himanshoe.core.data.local.session
 
 import com.himanshoe.core.data.local.datastore.store.AppConfig
-import com.himanshoe.core.data.local.session.SessionManager
 import com.himanshoe.core.model.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

@@ -49,6 +49,7 @@ dependencies {
     implementation project(":core")
     implementation project(":feature:login")
     implementation project(":feature:splash")
+    implementation project(":feature:landing")
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation kotlinLibrary.stdlib

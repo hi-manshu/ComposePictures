@@ -1,6 +1,6 @@
 package com.himanshoe.core.base
 
-import com.roomiapp.core.util.IResult
+import com.himanshoe.core.util.IResult
 import kotlinx.coroutines.flow.Flow
 
 /**

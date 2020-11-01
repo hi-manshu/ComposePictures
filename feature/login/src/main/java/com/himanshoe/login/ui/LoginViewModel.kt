@@ -1,6 +1,5 @@
 package com.himanshoe.login.ui
 
-import android.util.Log
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,8 +10,8 @@ import com.himanshoe.core.data.local.session.SessionManager
 import com.himanshoe.core.model.User
 import com.himanshoe.core.navigator.Navigator
 import com.himanshoe.core.util.validator.isLoginValid
-import com.roomiapp.core.util.IResult
-import com.roomiapp.core.util.NetworkHelper
+import com.himanshoe.core.util.IResult
+import com.himanshoe.core.util.NetworkHelper
 import kotlinx.coroutines.launch
 
 class LoginViewModel @ViewModelInject constructor(

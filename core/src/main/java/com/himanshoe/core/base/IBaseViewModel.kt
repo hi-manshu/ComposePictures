@@ -1,7 +1,7 @@
 package com.himanshoe.core.base
 
 import androidx.lifecycle.ViewModel
-import com.roomiapp.core.util.NetworkHelper
+import com.himanshoe.core.util.NetworkHelper
 
 /**
  * Created by Himanshu Singh on 24-10-2020.

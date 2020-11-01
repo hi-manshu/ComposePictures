@@ -1,6 +1,6 @@
 package com.himanshoe.core.data.remote.util
 
-import com.roomiapp.core.util.IResult
+import com.himanshoe.core.util.IResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*

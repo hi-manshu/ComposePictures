@@ -1,4 +1,4 @@
-package com.himanshoe.photos.ui.main
+package com.himanshoe.landing.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,17 +23,19 @@ import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.compose.*
-import com.himanshoe.photos.Screen
-import com.himanshoe.photos.items
-import com.himanshoe.photos.ui.movies.MoviesUI
+import com.himanshoe.landing.ui.composable.PhotoUI
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainFragment : Fragment() {
+
+@AndroidEntryPoint
+class LandingFragment : Fragment() {
 
     companion object {
-        fun newInstance() = MainFragment()
+        fun newInstance() = LandingFragment()
+        private const val INITIAL_PAGE = 1
     }
 
-    private val viewModel: MainViewModel by viewModels()
+    private val viewModel: LandingViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,8 +49,9 @@ class MainFragment : Fragment() {
                         TopAppBar(backgroundColor = Color.Black,
                             content = {
                                 Text(
-                                    text = "Movies",
-                                    modifier = Modifier.align(Alignment.CenterVertically).padding(start = 16.dp),
+                                    text = "Photo Collector",
+                                    modifier = Modifier.align(Alignment.CenterVertically)
+                                        .padding(start = 16.dp),
                                     style = TextStyle(
                                         color = Color.White,
                                         fontSize = 20.sp,
@@ -90,9 +92,12 @@ class MainFragment : Fragment() {
                         }
                     }
                 ) {
-                    NavHost(navController, startDestination = Screen.Profile.route) {
-//                        composable(Screen.Profile.route) { LoginUI(viewModel) }
-                        composable(Screen.Movies.route) { MoviesUI() }
+                    NavHost(
+                        navController,
+                        startDestination = Screen.Profile.route
+                    ) {
+                        composable(Screen.Profile.route) { PhotoUI(viewModel) }
+                        composable(Screen.Images.route) {}
                     }
                 }
 
@@ -100,10 +105,8 @@ class MainFragment : Fragment() {
         }
     }
 
-    @Composable
-    private fun Profile() {
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.init(INITIAL_PAGE)
     }
-
-
 }

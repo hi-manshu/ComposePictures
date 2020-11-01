@@ -1,4 +1,4 @@
-package com.roomiapp.core.util
+package com.himanshoe.core.util
 
 sealed class IResult<out DTO : Any> {
     data class OnSuccess<out DTO : Any>(val response: DTO) : IResult<DTO>()

@@ -2,7 +2,6 @@ package com.himanshoe.login.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +18,7 @@ import com.google.firebase.ktx.Firebase
 import com.himanshoe.core.base.PhotoCollectorTheme
 import com.himanshoe.login.R
 import com.himanshoe.login.ui.composable.LoginUI
-import com.roomiapp.core.util.IResult
+import com.himanshoe.core.util.IResult
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
