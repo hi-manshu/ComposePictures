@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">movies-compose</string>
+    <string name="movies">Movies</string>
+    <string name="profile">Profile</string>
 </resources>
