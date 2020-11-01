@@ -34,7 +34,11 @@ ext {
             material          : "com.google.android.material:material:1.2.1",
     ]
     firebase = [
-            analytics: "com.google.firebase:firebase-analytics-ktx"
+            analytics: "com.google.firebase:firebase-analytics-ktx",
+            authLibrary: "com.google.firebase:firebase-auth-ktx",
+            playServices: "com.google.android.gms:play-services-auth:18.1.0"
+
+
     ]
 
     kotlinLibrary = [

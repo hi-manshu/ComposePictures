@@ -10,6 +10,8 @@ import com.himanshoe.core.navigator.NavigateTo
 import com.himanshoe.core.navigator.NavigateTo.*
 import com.himanshoe.core.navigator.event.Event
 import com.himanshoe.core.navigator.event.consume
+import dagger.Module
+import javax.inject.Inject
 
 /**
  * Created by Himanshu Singh on 24-10-2020.
@@ -18,7 +20,7 @@ import com.himanshoe.core.navigator.event.consume
  * Navigator is build on top on [MutableLiveData]. Use [navigate] methods to post navigation events on live-data using
  * [NavigateTo] or [NavDirections]. Use [navigateBy] method to observe the navigation events in views.
  */
-class Navigator {
+class Navigator @Inject constructor() {
 
     private val navLiveData = MutableLiveData<Event<NavigateTo>>()
 

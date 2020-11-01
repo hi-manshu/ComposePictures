@@ -3,6 +3,8 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+
+
 }
 
 android {
@@ -58,5 +60,8 @@ dependencies {
     kapt daggerHilt.androidCompiler
     kapt daggerHilt.compiler
     implementation daggerHilt.viewModel
+    implementation platform('com.google.firebase:firebase-bom:26.0.0')
+    implementation firebase.authLibrary
+    implementation firebase.playServices
 
 }

@@ -77,7 +77,6 @@ fun LoginUI(viewModel: LoginViewModel) {
 
                 addSpace(32.dp)
 
-
                 buttonLogin("Login") {
                     viewModel.doLoginViaEmail(emailState.value.text, passwordState.value.text)
                 }
@@ -97,7 +96,7 @@ fun LoginUI(viewModel: LoginViewModel) {
                 addSpace(8.dp)
 
                 buttonLogin("Login with Google", Color.DarkGray) {
-
+                    viewModel.doLoginViewGoogle()
                 }
 
             }
