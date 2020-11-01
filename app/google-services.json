@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "401117359722",
+    "firebase_url": "https://sloup-c9527.firebaseio.com",
+    "project_id": "sloup-c9527",
+    "storage_bucket": "sloup-c9527.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401117359722:android:80bc1d18723d995e5e6413",
+        "android_client_info": {
+          "package_name": "com.himanshoe.photos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "401117359722-r80jlfkmho3669gu86mqad5jau55o11d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfnb9leLJNeCMFNHFkXN_Vs816V9g6GRo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "401117359722-r80jlfkmho3669gu86mqad5jau55o11d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,4 @@
-package com.himanshoe.photos
+package com.himanshoe.login
 
 import org.junit.Test
 

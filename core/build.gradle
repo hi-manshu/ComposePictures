@@ -1,19 +1,22 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+
+    id 'kotlin-kapt'
+   id 'dagger.hilt.android.plugin'
+}
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.himanshoe.photos"
-        minSdkVersion 21
+        minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -43,21 +46,31 @@ android {
 
 dependencies {
 
-    implementation project(":core")
-    implementation project(":feature:login")
-    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    testImplementation library.jUnitTest
+
+
+    api jetpackCompose.composeUI
+    api jetpackCompose.composeTooling
+    api jetpackCompose.composeFoundation
+    api jetpackCompose.composeMaterial
+    api jetpackCompose.composeCore
+    api jetpackCompose.composeExtended
+    api jetpackCompose.composeLiveData
+    api jetpackCompose.composeNavigation
+
+    implementation library.appCompat
+    implementation library.material
+    implementation library.coreKtx
     implementation kotlinLibrary.stdlib
 
-    implementation library.fragmentKtx
-    testImplementation library.jUnitTest
-    implementation library.lifecycleExtension
-    implementation library.liveDataKtx
-    implementation library.viewModelKtx
-    implementation library.constraintlayout
-    implementation library.appCompat
-    implementation library.coreKtx
+    api networking.retrofit
+    api networking.gson
+    api networking.okHttp
 
-    implementation platform('com.google.firebase:firebase-bom:26.0.0')
-    implementation firebase.analytics
+    implementation daggerHilt.main
+    kapt daggerHilt.androidCompiler
+    kapt daggerHilt.compiler
+    implementation daggerHilt.viewModel
 
 }

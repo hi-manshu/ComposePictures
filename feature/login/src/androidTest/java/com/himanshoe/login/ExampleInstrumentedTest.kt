@@ -1,4 +1,4 @@
-package com.himanshoe.photos
+package com.himanshoe.login
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.himanshoe.photos", appContext.packageName)
+        assertEquals("com.himanshoe.login.test", appContext.packageName)
     }
 }

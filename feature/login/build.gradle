@@ -1,19 +1,19 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.himanshoe.photos"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -42,22 +42,16 @@ android {
 }
 
 dependencies {
-
     implementation project(":core")
-    implementation project(":feature:login")
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation kotlinLibrary.stdlib
 
-    implementation library.fragmentKtx
-    testImplementation library.jUnitTest
-    implementation library.lifecycleExtension
-    implementation library.liveDataKtx
-    implementation library.viewModelKtx
-    implementation library.constraintlayout
+    implementation kotlinLibrary.stdlib
     implementation library.appCompat
     implementation library.coreKtx
+    implementation library.material
+    testImplementation library.jUnitTest
+    implementation library.liveDataKtx
+    implementation library.viewModelKtx
+    implementation library.fragmentKtx
 
-    implementation platform('com.google.firebase:firebase-bom:26.0.0')
-    implementation firebase.analytics
 
 }
