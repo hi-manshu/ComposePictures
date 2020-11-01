@@ -1,4 +1,4 @@
-package com.himanshoe.login.composable
+package com.himanshoe.login.ui.composable
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Text
@@ -29,87 +29,91 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.himanshoe.login.ui.LoginViewModel
+import com.himanshoe.core.extension.fullScreen
 import com.himanshoe.core.util.validator.isEmail
+import com.himanshoe.login.ui.LoginViewModel
 import java.util.*
 
 @Composable
 fun LoginUI(viewModel: LoginViewModel) {
-    Scaffold(modifier = Modifier.padding(16.dp), bodyContent = {
+    Scaffold(
+        modifier = Modifier.fullScreen().padding(16.dp),
+        bodyContent = {
 
-        val emailState = remember { mutableStateOf(TextFieldValue()) }
-        val passwordState = remember { mutableStateOf(TextFieldValue()) }
+            val emailState = remember { mutableStateOf(TextFieldValue()) }
+            val passwordState = remember { mutableStateOf(TextFieldValue()) }
 
-        Column(modifier = Modifier.fillMaxWidth().fillMaxHeight()) {
-            Text(
-                text = "Skip",
-                modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.End,
-                style = MaterialTheme.typography.h6
-            )
-            addSpace()
-            Text(
-                text = "Welcome to,\nPhoto Collector",
-                style = MaterialTheme.typography.h4
-            )
-            addSpace(32.dp)
-
-            inputField(KeyboardType.Email, Icons.Filled.Email, emailState, LoginField.EMAIL)
-
-            if (!emailState.value.isEmail() && emailState.value.text.isNotEmpty()) {
+            Column {
                 Text(
-                    emailState.value.text + " is not a valid email",
-                    style = TextStyle(color = Color.Red)
+                    text = "Skip",
+                    modifier = Modifier.fillMaxWidth(),
+                    textAlign = TextAlign.End,
+                    style = MaterialTheme.typography.body1
                 )
+                addSpace()
+                Text(
+                    text = "Welcome to,\nPhoto Collector",
+                    style = MaterialTheme.typography.h4
+                )
+                addSpace(32.dp)
+
+                inputField(KeyboardType.Email, Icons.Filled.Email, emailState, LoginField.EMAIL)
+
+                if (!emailState.value.isEmail() && emailState.value.text.isNotEmpty()) {
+                    Text(
+                        emailState.value.text + " is not a valid email",
+                        style = TextStyle(color = Color.Red)
+                    )
+                }
+
+                addSpace()
+
+                inputField(
+                    KeyboardType.Password,
+                    (Icons.Filled.RemoveRedEye),
+                    passwordState,
+                    LoginField.PASSWORD
+                )
+
+                addSpace(32.dp)
+
+
+                buttonLogin("Login") {
+                    viewModel.doLoginViaEmail(emailState.value.text, passwordState.value.text)
+                }
+
+                addSpace(8.dp)
+
+                Text(
+                    text = "or",
+                    modifier = Modifier.fillMaxWidth().padding(start = 16.dp),
+                    style = TextStyle(
+                        textAlign = TextAlign.Center,
+                        letterSpacing = TextUnit.Sp(1.5),
+                        fontSize = 16.sp,
+                        fontFamily = FontFamily.SansSerif,
+                    )
+                )
+                addSpace(8.dp)
+
+                buttonLogin("Login with Google", Color.DarkGray) {
+
+                }
+
             }
-
-            addSpace()
-
-            inputField(
-                KeyboardType.Password,
-                (Icons.Filled.RemoveRedEye),
-                passwordState,
-                LoginField.PASSWORD
-            )
-
-            addSpace(32.dp)
-
-
-            buttonLogin("Login") {
-                viewModel.doLoginViaEmail(emailState.value.text,passwordState.value.text)
-            }
-
-            addSpace(8.dp)
-
+        },
+        bottomBar = {
             Text(
-                text = "or",
-                modifier = Modifier.fillMaxWidth().padding(start = 16.dp),
-                style = TextStyle(
-                    textAlign = TextAlign.Center,
-                    letterSpacing = TextUnit.Sp(1.5),
-                    fontSize = 16.sp,
-                    fontFamily = FontFamily.SansSerif,
+                text = "Made with ❤ in India",
+                modifier = Modifier.fillMaxWidth(),
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.h6.merge(
+                    TextStyle(
+                        fontWeight = FontWeight.Bold
+                    )
                 )
             )
-            addSpace(8.dp)
-
-            buttonLogin("Login with Google", Color.DarkGray) {
-
-            }
-
-        }
-    }, bottomBar = {
-        Text(
-            text = "Made with ❤ in India",
-            modifier = Modifier.fillMaxWidth(),
-            textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.h6.merge(
-                TextStyle(
-                    fontWeight = FontWeight.Bold
-                )
-            )
-        )
-    })
+        })
 
 
 }

@@ -26,7 +26,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.compose.*
 import com.himanshoe.photos.Screen
 import com.himanshoe.photos.items
-import com.himanshoe.login.composable.LoginUI
 import com.himanshoe.photos.ui.movies.MoviesUI
 
 class MainFragment : Fragment() {

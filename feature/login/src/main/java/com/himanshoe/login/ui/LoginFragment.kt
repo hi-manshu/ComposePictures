@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.himanshoe.core.base.PhotoCollectorTheme
-import com.himanshoe.login.composable.LoginUI
+import com.himanshoe.login.ui.composable.LoginUI
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
 
     companion object {

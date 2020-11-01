@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion 30
@@ -59,5 +61,10 @@ dependencies {
 
     implementation platform('com.google.firebase:firebase-bom:26.0.0')
     implementation firebase.analytics
+
+    implementation daggerHilt.main
+    kapt daggerHilt.androidCompiler
+    kapt daggerHilt.compiler
+    implementation daggerHilt.viewModel
 
 }

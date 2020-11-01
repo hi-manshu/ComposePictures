@@ -3,14 +3,14 @@ plugins {
     id 'kotlin-android'
 
     id 'kotlin-kapt'
-   id 'dagger.hilt.android.plugin'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
     compileSdkVersion 30
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -72,5 +72,9 @@ dependencies {
     kapt daggerHilt.androidCompiler
     kapt daggerHilt.compiler
     implementation daggerHilt.viewModel
+
+    api library.navFragment
+    api library.navFragmentKtx
+    api library.dataStore
 
 }
