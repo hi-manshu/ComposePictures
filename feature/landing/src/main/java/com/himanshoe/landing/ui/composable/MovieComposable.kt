@@ -1,12 +1,13 @@
 package com.himanshoe.landing.ui.composable
 
-import android.util.Log
-import androidx.compose.foundation.Text
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumnForIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.onActive
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.himanshoe.landing.data.response.PhotoResponse
 import com.himanshoe.landing.ui.LandingViewModel
 
@@ -15,8 +16,9 @@ fun PhotoUI(viewModel: LandingViewModel) {
     val photosState: State<List<PhotoResponse>?> = viewModel.photos.observeAsState()
     val photosList: List<PhotoResponse> = photosState.value ?: emptyList()
 
+    val list: List<List<PhotoResponse>> = photosList.chunked(2)
     LazyColumnForIndexed(photosList) { index: Int, item: PhotoResponse ->
-        Text(text = item.downloadUrl)
+        CoilImage(model = item.downloadUrl, modifier = Modifier.padding(2.dp))
 
         if (photosList.isNotEmpty() && photosList.count().minus(5) == index) {
             onActive {
@@ -25,3 +27,4 @@ fun PhotoUI(viewModel: LandingViewModel) {
         }
     }
 }
+

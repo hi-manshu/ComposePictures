@@ -31,11 +31,13 @@ ext {
             jUnitTest         : "junit:junit:4.12",
             viewModelKtx      : "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0",
             liveDataKtx       : "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0",
+            coil              : "io.coil-kt:coil:1.0.0",
             material          : "com.google.android.material:material:1.2.1",
+
     ]
     firebase = [
-            analytics: "com.google.firebase:firebase-analytics-ktx",
-            authLibrary: "com.google.firebase:firebase-auth-ktx",
+            analytics   : "com.google.firebase:firebase-analytics-ktx",
+            authLibrary : "com.google.firebase:firebase-auth-ktx",
             playServices: "com.google.android.gms:play-services-auth:18.1.0"
 
 

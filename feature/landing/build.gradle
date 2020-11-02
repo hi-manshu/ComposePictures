@@ -55,6 +55,7 @@ dependencies {
     implementation library.liveDataKtx
     implementation library.viewModelKtx
     implementation library.fragmentKtx
+    implementation library.coil
     implementation daggerHilt.main
     kapt daggerHilt.androidCompiler
     kapt daggerHilt.compiler
