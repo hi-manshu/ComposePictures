@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -71,7 +69,7 @@ class LandingFragment : Fragment() {
                             val currentRoute = navBackStackEntry?.arguments?.getString(KEY_ROUTE)
                             items.forEach { screen ->
                                 BottomNavigationItem(
-                                    icon = { Icon(Icons.Filled.Favorite) },
+                                    icon = { Icon(screen.icon) },
                                     label = { Text(stringResource(screen.resourceId)) },
                                     selected = currentRoute == screen.route,
                                     onClick = {
@@ -96,8 +94,8 @@ class LandingFragment : Fragment() {
                         navController,
                         startDestination = Screen.Profile.route
                     ) {
-                        composable(Screen.Profile.route) { PhotoUI(viewModel) }
-                        composable(Screen.Images.route) {}
+                        composable(Screen.Images.route) {PhotoUI(viewModel) }
+                        composable(Screen.Profile.route) { }
                     }
                 }
 

@@ -28,6 +28,10 @@ class LandingViewModel @ViewModelInject constructor(
     val photos: LiveData<List<PhotoResponse>>
         get() = _photos
 
+    private val _photo = MutableLiveData<String>()
+    val photo: LiveData<String>
+        get() = _photo
+
     fun loadMorePhotos() {
         pageNumber.value?.plus(1)?.let { init(it) }
     }
@@ -45,5 +49,9 @@ class LandingViewModel @ViewModelInject constructor(
                     }
                 }
         }
+    }
+
+    fun openImage(downloadUrl: String) {
+        _photo.postValue(downloadUrl)
     }
 }
