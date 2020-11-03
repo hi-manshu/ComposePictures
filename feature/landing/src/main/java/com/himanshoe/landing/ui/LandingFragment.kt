@@ -22,6 +22,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.compose.*
 import com.himanshoe.landing.ui.composable.PhotoUI
+import com.himanshoe.landing.ui.composable.ProfileUI
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -94,8 +95,8 @@ class LandingFragment : Fragment() {
                         navController,
                         startDestination = Screen.Profile.route
                     ) {
-                        composable(Screen.Images.route) {PhotoUI(viewModel) }
-                        composable(Screen.Profile.route) { }
+                        composable(Screen.Images.route) {PhotoUI(viewModel)}
+                        composable(Screen.Profile.route) { ProfileUI(viewModel) }
                     }
                 }
 
@@ -106,5 +107,6 @@ class LandingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.init(INITIAL_PAGE)
+        viewModel.getUser()
     }
 }

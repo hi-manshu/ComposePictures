@@ -5,6 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.himanshoe.core.base.IBaseViewModel
+import com.himanshoe.core.data.local.datastore.store.AppConfig
+import com.himanshoe.core.model.User
 import com.himanshoe.core.navigator.Navigator
 import com.himanshoe.core.util.IResult
 import com.himanshoe.core.util.NetworkHelper
@@ -32,6 +34,10 @@ class LandingViewModel @ViewModelInject constructor(
     val photo: LiveData<String>
         get() = _photo
 
+    private val _user = MutableLiveData<User>()
+    val user: LiveData<User>
+        get() = _user
+
     fun loadMorePhotos() {
         pageNumber.value?.plus(1)?.let { init(it) }
     }
@@ -47,6 +53,15 @@ class LandingViewModel @ViewModelInject constructor(
                         is IResult.OnSuccess -> _photos.postValue(result.response)
                         is IResult.OnFailed -> _photos.postValue(emptyList())
                     }
+                }
+        }
+    }
+
+    fun getUser() {
+        viewModelScope.launch {
+            AppConfig.getUser()
+                .collect {
+                    _user.postValue(it)
                 }
         }
     }
