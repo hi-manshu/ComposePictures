@@ -63,4 +63,6 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:26.0.0')
     implementation firebase.authLibrary
     implementation firebase.playServices
+    implementation library.navFragment
+    implementation library.navFragmentKtx
 }

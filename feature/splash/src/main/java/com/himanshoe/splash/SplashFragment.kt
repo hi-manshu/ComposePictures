@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.himanshoe.core.base.PhotoCollectorTheme
 import com.himanshoe.splash.composables.SplashUI
 
@@ -14,7 +15,7 @@ class SplashFragment : Fragment() {
         fun newInstance() = SplashFragment()
     }
 
-    private lateinit var viewModel: SplashViewModel
+    private val viewModel: SplashViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,6 +24,12 @@ class SplashFragment : Fragment() {
         return PhotoCollectorTheme(requireContext()) {
             SplashUI()
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.navigator.navigateBy(this)
+        viewModel.navigate()
     }
 
 }
