@@ -3,7 +3,7 @@ package com.himanshoe.splash
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.viewModelScope
 import com.himanshoe.core.base.IBaseViewModel
-import com.himanshoe.core.data.local.datastore.store.AppConfig
+import com.himanshoe.core.data.local.session.SessionManager
 import com.himanshoe.core.navigator.Navigator
 import com.himanshoe.core.util.NetworkHelper
 import com.himanshoe.splash.SplashDeeplink.deepLinkToLanding
@@ -13,12 +13,14 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class SplashViewModel @ViewModelInject constructor(
-    networkHelper: NetworkHelper, val navigator: Navigator
+    networkHelper: NetworkHelper,
+    val navigator: Navigator,
+    private val sessionManager: SessionManager
 ) : IBaseViewModel(networkHelper) {
 
     fun navigate() {
         viewModelScope.launch {
-            AppConfig.getUser().collect { user ->
+            sessionManager.getUser().collect { user ->
                 delay(3000)
                 if (user.isLoggedIn()) {
                     navigator.navigate(deepLinkToLanding())

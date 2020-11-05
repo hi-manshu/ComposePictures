@@ -3,7 +3,6 @@ package com.himanshoe.core.data.local.datastore.store
 import androidx.datastore.preferences.preferencesKey
 import com.google.gson.Gson
 import com.himanshoe.core.data.local.datastore.DataStoreProvider
-import com.himanshoe.core.data.local.datastore.store.AppConfig.DEFAULT.STRING
 import com.himanshoe.core.data.local.datastore.store.AppConfig.Keys.USER
 import com.himanshoe.core.model.User
 import kotlinx.coroutines.flow.Flow
@@ -23,17 +22,6 @@ object AppConfig : DataStoreProvider() {
         }
     }
 
-    suspend fun logout() {
-        setUser(
-            User(
-                id = STRING,
-                description = STRING,
-                displayUrl = STRING,
-                name = STRING,
-                email = STRING
-            )
-        )
-    }
 
     suspend fun setUser(user: User) {
         setValue(USER, Gson().toJson(user))

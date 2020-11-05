@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.himanshoe.core.base.IBaseViewModel
-import com.himanshoe.core.data.local.datastore.store.AppConfig
+import com.himanshoe.core.data.local.session.SessionManager
 import com.himanshoe.core.model.User
 import com.himanshoe.core.navigator.NavigateTo
 import com.himanshoe.core.navigator.Navigator
@@ -20,7 +20,8 @@ import kotlinx.coroutines.launch
 class LandingViewModel @ViewModelInject constructor(
     networkHelper: NetworkHelper,
     val navigator: Navigator,
-    private val getPhotosUseCase: GetPhotosUseCase
+    private val getPhotosUseCase: GetPhotosUseCase,
+    private val sessionManager: SessionManager
 ) : IBaseViewModel(networkHelper) {
 
     private val _pageNumber = MutableLiveData<Int>()
@@ -60,7 +61,7 @@ class LandingViewModel @ViewModelInject constructor(
 
     fun getUser() {
         viewModelScope.launch {
-            AppConfig.getUser()
+            sessionManager.getUser()
                 .collect {
                     _user.postValue(it)
                 }
@@ -73,7 +74,7 @@ class LandingViewModel @ViewModelInject constructor(
 
     fun logout() {
         viewModelScope.launch {
-            AppConfig.logout()
+            sessionManager.logout()
             navigator.navigate(NavigateTo.Back)
         }
     }
