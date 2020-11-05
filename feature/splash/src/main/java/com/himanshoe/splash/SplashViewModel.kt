@@ -22,7 +22,7 @@ class SplashViewModel @ViewModelInject constructor(
         viewModelScope.launch {
             sessionManager.getUser().collect { user ->
                 delay(3000)
-                if (user.isLoggedIn()) {
+                if (user !=null && user.isLoggedIn()) {
                     navigator.navigate(deepLinkToLanding())
                 } else {
                     navigator.navigate(deepLinkToLogin())

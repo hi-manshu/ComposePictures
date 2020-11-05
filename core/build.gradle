@@ -76,7 +76,8 @@ dependencies {
     api library.navFragment
     api library.navFragmentKtx
     implementation library.coil
-
+    implementation platform('com.google.firebase:firebase-bom:26.0.0')
+    implementation firebase.authLibrary
     api library.dataStore
 
 }

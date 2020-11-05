@@ -13,5 +13,5 @@ interface SessionManager {
 
     suspend fun logout()
 
-    suspend fun getUser(): Flow<User>
+    suspend fun getUser(): Flow<User?>
 }

@@ -47,12 +47,7 @@ fun LoginUI(viewModel: LoginViewModel) {
             val passwordState = remember { mutableStateOf(TextFieldValue()) }
 
             Column(modifier = Modifier.fullScreen().padding(16.dp)) {
-                Text(
-                    text = "Skip",
-                    modifier = Modifier.fillMaxWidth(),
-                    textAlign = TextAlign.End,
-                    style = MaterialTheme.typography.body1
-                )
+
                 addSpace()
 
                 Text(

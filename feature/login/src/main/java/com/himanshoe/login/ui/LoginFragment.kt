@@ -16,6 +16,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.himanshoe.core.base.photoCollectorTheme
+import com.himanshoe.core.model.Source
 import com.himanshoe.core.util.IResult
 import com.himanshoe.login.R
 import com.himanshoe.login.ui.composable.LoginUI
@@ -26,11 +27,12 @@ class LoginFragment : Fragment() {
 
     companion object {
         private const val RC_SIGN_IN = 100
-        fun newInstance() = LoginFragment()
     }
 
     private val viewModel: LoginViewModel by viewModels()
+
     private lateinit var auth: FirebaseAuth
+
     private val googleSignIn by lazy {
         GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
@@ -85,7 +87,7 @@ class LoginFragment : Fragment() {
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 val user = auth.currentUser
-                                viewModel.setUser(user)
+                                viewModel.setUser(user,Source.GOOGLE)
                                 viewModel.navigate()
                             }
                         }
@@ -106,7 +108,7 @@ class LoginFragment : Fragment() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val user = auth.currentUser
-                    viewModel.setUser(user)
+                    viewModel.setUser(user,Source.EMAIL)
                 }
             }
     }

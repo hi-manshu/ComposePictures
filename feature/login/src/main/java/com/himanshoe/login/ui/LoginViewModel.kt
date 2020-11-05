@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseUser
 import com.himanshoe.core.base.IBaseViewModel
 import com.himanshoe.core.data.local.session.SessionManager
+import com.himanshoe.core.model.Source
 import com.himanshoe.core.model.User
 import com.himanshoe.core.navigator.Navigator
 import com.himanshoe.core.util.IResult
@@ -24,6 +25,7 @@ class LoginViewModel @ViewModelInject constructor(
     private val _initialize = MutableLiveData<Unit>()
     val initialize: LiveData<Unit>
         get() = _initialize
+
     private val _loginViaGoogle = MutableLiveData<Unit>()
     val loginViaGoogle: LiveData<Unit>
         get() = _loginViaGoogle
@@ -49,7 +51,7 @@ class LoginViewModel @ViewModelInject constructor(
         _initialize.postValue(Unit)
     }
 
-    fun setUser(user: FirebaseUser?) {
+    fun setUser(user: FirebaseUser?, source: Source) {
         viewModelScope.launch {
             if (user != null) {
                 sessionManager.setUser(
@@ -57,7 +59,8 @@ class LoginViewModel @ViewModelInject constructor(
                         id = user.uid,
                         displayUrl = user.photoUrl.toString(),
                         name = user.displayName ?: "",
-                        email = user.email ?: ""
+                        email = user.email ?: "",
+                        source = source
                     )
                 )
             }
@@ -76,7 +79,7 @@ class LoginViewModel @ViewModelInject constructor(
         _loginViaGoogle.postValue(Unit)
     }
 
-    fun navigate(){
+    fun navigate() {
         navigator.navigate(deepLinkToLanding())
     }
 

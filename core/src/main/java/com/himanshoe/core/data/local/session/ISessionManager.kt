@@ -1,5 +1,7 @@
 package com.himanshoe.core.data.local.session
 
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 import com.himanshoe.core.data.local.datastore.store.AppConfig
 import com.himanshoe.core.model.User
@@ -26,6 +28,7 @@ class ISessionManager @Inject constructor() : SessionManager {
 
 
     override suspend fun logout() {
+        Firebase.auth.signOut()
         setUser(
             User(
                 id = AppConfig.DEFAULT.STRING,

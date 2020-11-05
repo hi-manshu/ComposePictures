@@ -30,7 +30,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class LandingFragment : Fragment() {
 
     companion object {
-        fun newInstance() = LandingFragment()
         private const val INITIAL_PAGE = 1
     }
 

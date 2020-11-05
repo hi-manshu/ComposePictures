@@ -35,7 +35,7 @@ fun ProfileUI(viewModel: LandingViewModel) {
     val user = viewModel.user.observeAsState().value
     ScrollableColumn(modifier = Modifier.fullScreen().padding(16.dp)) {
         CoilImage(
-            model = user?.displayUrl ?:"",
+            model = user?.displayUrl ?: "",
             modifier = Modifier.preferredSize(200.dp)
                 .fillMaxWidth()
                 .background(color = "fdecd2".toColor(), shape = CircleShape)
@@ -47,14 +47,14 @@ fun ProfileUI(viewModel: LandingViewModel) {
             modifier = Modifier.drawOpacity(0.4F).padding(top = 20.dp)
         )
         Text(
-            text = user?.name?.capitalize(Locale.ROOT) ?:"",
+            text = user?.name?.capitalize(Locale.ROOT) ?: "",
             modifier = Modifier.align(Alignment.Start).padding(start = 16.dp, top = 20.dp),
             style = MaterialTheme.typography.h5,
             fontWeight = FontWeight.Bold,
             fontSize = 24.sp
         )
         Text(
-            text = user?.email ?:"",
+            text = user?.email ?: "",
             modifier = Modifier.align(Alignment.Start).padding(start = 16.dp, top = 10.dp),
             style = MaterialTheme.typography.body1,
             fontSize = 14.sp
@@ -70,7 +70,7 @@ fun ProfileUI(viewModel: LandingViewModel) {
                 .background(color = "fdecd2".toColor())
                 .fillMaxWidth()
                 .clickable(onClick = {
-                    viewModel.openEditScreen()
+                    viewModel.openEditScreen(user?.source)
                 })
         ) {
             Text(

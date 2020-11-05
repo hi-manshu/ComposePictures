@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.himanshoe.core.base.IBaseViewModel
 import com.himanshoe.core.data.local.session.SessionManager
+import com.himanshoe.core.model.Source
 import com.himanshoe.core.model.User
 import com.himanshoe.core.navigator.NavigateTo
 import com.himanshoe.core.navigator.Navigator
@@ -39,6 +40,10 @@ class LandingViewModel @ViewModelInject constructor(
     private val _user = MutableLiveData<User>()
     val user: LiveData<User>
         get() = _user
+
+    private val _editProfile = MutableLiveData<Source>()
+    val editProfile: LiveData<Source>
+        get() = _editProfile
 
     fun loadMorePhotos() {
         pageNumber.value?.plus(1)?.let { init(it) }
@@ -79,7 +84,7 @@ class LandingViewModel @ViewModelInject constructor(
         }
     }
 
-    fun openEditScreen() {
-
+    fun openEditScreen(source: Source?) {
+        _editProfile.postValue(source)
     }
 }

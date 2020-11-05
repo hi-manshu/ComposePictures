@@ -23,7 +23,7 @@ object AppConfig : DataStoreProvider() {
     }
 
 
-    suspend fun setUser(user: User) {
+    suspend fun setUser(user: User?) {
         setValue(USER, Gson().toJson(user))
     }
 
