@@ -16,9 +16,9 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.himanshoe.core.base.PhotoCollectorTheme
+import com.himanshoe.core.util.IResult
 import com.himanshoe.login.R
 import com.himanshoe.login.ui.composable.LoginUI
-import com.himanshoe.core.util.IResult
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -86,6 +86,7 @@ class LoginFragment : Fragment() {
                             if (task.isSuccessful) {
                                 val user = auth.currentUser
                                 viewModel.setUser(user)
+                                viewModel.navigate()
                             }
                         }
                 }

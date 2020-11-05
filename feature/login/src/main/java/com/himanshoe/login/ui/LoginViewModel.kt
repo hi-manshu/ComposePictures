@@ -9,9 +9,10 @@ import com.himanshoe.core.base.IBaseViewModel
 import com.himanshoe.core.data.local.session.SessionManager
 import com.himanshoe.core.model.User
 import com.himanshoe.core.navigator.Navigator
-import com.himanshoe.core.util.validator.isLoginValid
 import com.himanshoe.core.util.IResult
 import com.himanshoe.core.util.NetworkHelper
+import com.himanshoe.core.util.validator.isLoginValid
+import com.himanshoe.login.ui.LoginDeeplink.deepLinkToLanding
 import kotlinx.coroutines.launch
 
 class LoginViewModel @ViewModelInject constructor(
@@ -73,6 +74,10 @@ class LoginViewModel @ViewModelInject constructor(
 
     fun doLoginViewGoogle() {
         _loginViaGoogle.postValue(Unit)
+    }
+
+    fun navigate(){
+        navigator.navigate(deepLinkToLanding())
     }
 
 }
