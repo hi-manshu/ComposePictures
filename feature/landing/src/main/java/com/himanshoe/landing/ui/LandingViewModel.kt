@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.himanshoe.core.base.IBaseViewModel
 import com.himanshoe.core.data.local.datastore.store.AppConfig
 import com.himanshoe.core.model.User
+import com.himanshoe.core.navigator.NavigateTo
 import com.himanshoe.core.navigator.Navigator
 import com.himanshoe.core.util.IResult
 import com.himanshoe.core.util.NetworkHelper
@@ -68,5 +69,16 @@ class LandingViewModel @ViewModelInject constructor(
 
     fun openImage(downloadUrl: String) {
         _photo.postValue(downloadUrl)
+    }
+
+    fun logout() {
+        viewModelScope.launch {
+            AppConfig.logout()
+            navigator.navigate(NavigateTo.Back)
+        }
+    }
+
+    fun openEditScreen() {
+
     }
 }

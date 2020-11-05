@@ -3,6 +3,7 @@ package com.himanshoe.landing.ui.composable
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -34,7 +35,7 @@ fun ProfileUI(viewModel: LandingViewModel) {
     val user = viewModel.user.observeAsState().value
     ScrollableColumn(modifier = Modifier.fullScreen().padding(16.dp)) {
         CoilImage(
-            model = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80",
+            model = user?.displayUrl ?:"",
             modifier = Modifier.preferredSize(200.dp)
                 .fillMaxWidth()
                 .background(color = "fdecd2".toColor(), shape = CircleShape)
@@ -46,14 +47,14 @@ fun ProfileUI(viewModel: LandingViewModel) {
             modifier = Modifier.drawOpacity(0.4F).padding(top = 20.dp)
         )
         Text(
-            text = "Himanshu Singh",
+            text = user?.name?.capitalize(Locale.ROOT) ?:"",
             modifier = Modifier.align(Alignment.Start).padding(start = 16.dp, top = 20.dp),
             style = MaterialTheme.typography.h5,
             fontWeight = FontWeight.Bold,
             fontSize = 24.sp
         )
         Text(
-            text = "hello2himanshusingh@gmail.com",
+            text = user?.email ?:"",
             modifier = Modifier.align(Alignment.Start).padding(start = 16.dp, top = 10.dp),
             style = MaterialTheme.typography.body1,
             fontSize = 14.sp
@@ -68,6 +69,9 @@ fun ProfileUI(viewModel: LandingViewModel) {
                 .align(Alignment.End)
                 .background(color = "fdecd2".toColor())
                 .fillMaxWidth()
+                .clickable(onClick = {
+                    viewModel.openEditScreen()
+                })
         ) {
             Text(
                 text = "Complete Profile",
@@ -85,7 +89,9 @@ fun ProfileUI(viewModel: LandingViewModel) {
             )
         }
         Button(
-            onClick = { },
+            onClick = {
+                viewModel.logout()
+            },
             elevation = ButtonConstants.defaultElevation(
                 defaultElevation = 8.dp,
                 pressedElevation = 16.dp

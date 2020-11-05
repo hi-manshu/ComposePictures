@@ -102,6 +102,7 @@ class LandingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.navigator.navigateBy(this)
         viewModel.init(INITIAL_PAGE)
         viewModel.getUser()
     }
