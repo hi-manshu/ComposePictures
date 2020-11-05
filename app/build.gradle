@@ -70,5 +70,7 @@ dependencies {
     kapt daggerHilt.androidCompiler
     kapt daggerHilt.compiler
     implementation daggerHilt.viewModel
+    implementation library.navFragment
+    implementation library.navFragmentKtx
 
 }

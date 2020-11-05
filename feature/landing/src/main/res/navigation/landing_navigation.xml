@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/login_navigation"
+    android:id="@+id/landing_navigation"
     app:startDestination="@id/landingFragment">
 
     <fragment
@@ -10,6 +10,6 @@
         android:name="com.himanshoe.landing.ui.LandingFragment"
         android:label="landing_fragment"
         tools:layout="@layout/landing_fragment">
-        <deepLink  app:uri="navigate"/>
+        <deepLink app:uri="navigate" />
     </fragment>
 </navigation>
