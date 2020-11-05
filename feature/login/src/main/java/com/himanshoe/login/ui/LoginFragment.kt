@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.himanshoe.core.base.PhotoCollectorTheme
+import com.himanshoe.core.base.photoCollectorTheme
 import com.himanshoe.core.util.IResult
 import com.himanshoe.login.R
 import com.himanshoe.login.ui.composable.LoginUI
@@ -49,7 +49,7 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return PhotoCollectorTheme(requireContext()) {
+        return photoCollectorTheme(requireContext()) {
             LoginUI(viewModel)
         }
     }

@@ -22,6 +22,9 @@ object AppConfig : DataStoreProvider() {
         }
     }
 
+    suspend fun logout() {
+        setUser(User())
+    }
 
     suspend fun setUser(user: User) {
         setValue(USER, Gson().toJson(user))

@@ -10,6 +10,8 @@
         android:name="com.himanshoe.landing.ui.LandingFragment"
         android:label="landing_fragment"
         tools:layout="@layout/landing_fragment">
+
         <deepLink app:uri="compose://landing" />
+
     </fragment>
 </navigation>

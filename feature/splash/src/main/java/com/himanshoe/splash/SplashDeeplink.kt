@@ -2,6 +2,7 @@ package com.himanshoe.splash
 
 import androidx.navigation.navOptions
 import com.himanshoe.core.navigator.NavigateTo
+import com.himanshoe.core.navigator.fadeAnimation
 import com.himanshoe.core.navigator.slideUpAnimation
 
 object SplashDeeplink {
@@ -13,4 +14,14 @@ object SplashDeeplink {
     )
 
     fun deepLinkToLogin() = deepLinkToLogin
+
+
+    private val deepLinkToLanding = NavigateTo.DeepLink(
+        "compose://landing",
+        navOptions {
+            fadeAnimation()
+        }
+    )
+
+    fun deepLinkToLanding() = deepLinkToLanding
 }

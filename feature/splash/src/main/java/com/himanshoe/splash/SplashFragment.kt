@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.himanshoe.core.base.PhotoCollectorTheme
+import com.himanshoe.core.base.photoCollectorTheme
 import com.himanshoe.splash.composables.SplashUI
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,7 +19,7 @@ class SplashFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return PhotoCollectorTheme(requireContext()) {
+        return photoCollectorTheme(requireContext()) {
             SplashUI()
         }
     }

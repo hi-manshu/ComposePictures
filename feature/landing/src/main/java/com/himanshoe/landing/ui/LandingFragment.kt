@@ -74,14 +74,10 @@ class LandingFragment : Fragment() {
                                     label = { Text(stringResource(screen.resourceId)) },
                                     selected = currentRoute == screen.route,
                                     onClick = {
-                                        // This is the equivalent to popUpTo the start destination
                                         navController.popBackStack(
                                             navController.graph.startDestination,
                                             false
                                         )
-
-                                        // This if check gives us a "singleTop" behavior where we do not create a
-                                        // second instance of the composable if we are already on that destination
                                         if (currentRoute != screen.route) {
                                             navController.navigate(screen.route)
                                         }
@@ -93,10 +89,10 @@ class LandingFragment : Fragment() {
                 ) {
                     NavHost(
                         navController,
-                        startDestination = Screen.Profile.route
+                        startDestination = Screen.Images.route
                     ) {
-                        composable(Screen.Images.route) {PhotoUI(viewModel)}
                         composable(Screen.Profile.route) { ProfileUI(viewModel) }
+                        composable(Screen.Images.route) { PhotoUI(viewModel) }
                     }
                 }
 
