@@ -1,4 +1,4 @@
-package com.himanshoe.landing.ui.composable
+package com.himanshoe.core.common
 
 
 import android.graphics.drawable.Animatable

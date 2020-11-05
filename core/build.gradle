@@ -75,6 +75,8 @@ dependencies {
 
     api library.navFragment
     api library.navFragmentKtx
+    implementation library.coil
+
     api library.dataStore
 
 }

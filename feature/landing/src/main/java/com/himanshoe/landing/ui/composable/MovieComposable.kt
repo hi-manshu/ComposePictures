@@ -14,6 +14,7 @@ import androidx.compose.ui.gesture.doubleTapGestureFilter
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
+import com.himanshoe.core.common.CoilImage
 import com.himanshoe.landing.data.response.PhotoResponse
 import com.himanshoe.landing.ui.LandingViewModel
 
