@@ -7,6 +7,8 @@ This project is built using,
 * Multi-Module Architecture
 * Navigation Components to navigate to and fro in Modules
 * Jetpack Compose for UI
+* Navigation Components for Jetpack Compose
+* Data Store
 * Dagger Hilt
 * Kotlin Coroutines + Flow
 * Firebase for Auth
