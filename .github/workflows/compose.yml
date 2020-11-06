@@ -15,9 +15,11 @@ jobs:
         with:
           java-version: 1.8
 
+      - name: Grant Permission to Execute
+        run: chmod +x gradlew
 
-      - name: Run Link
+      - name: Run Lint
         run: ./gradlew lint
 
       - name: Build Project
-        run : ./gradlew assemble
+        run: ./gradlew assemble
