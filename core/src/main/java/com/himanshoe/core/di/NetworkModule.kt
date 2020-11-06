@@ -5,7 +5,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
-import dagger.hilt.android.components.ApplicationComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -23,7 +22,6 @@ class NetworkModule {
     companion object {
         const val BASE_URL = "baseUrl"
     }
-
 
     @Provides
     fun provideOkHttpClient(): OkHttpClient {
