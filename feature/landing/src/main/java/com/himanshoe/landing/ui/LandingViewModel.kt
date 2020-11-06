@@ -13,6 +13,7 @@ import com.himanshoe.core.navigator.Navigator
 import com.himanshoe.core.util.IResult
 import com.himanshoe.core.util.NetworkHelper
 import com.himanshoe.landing.data.response.PhotoResponse
+import com.himanshoe.landing.deeplink.LandingDeeplink.deepLinkToEditProfile
 import com.himanshoe.landing.domain.GetPhotosUseCase
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -40,10 +41,6 @@ class LandingViewModel @ViewModelInject constructor(
     private val _user = MutableLiveData<User>()
     val user: LiveData<User>
         get() = _user
-
-    private val _editProfile = MutableLiveData<Source>()
-    val editProfile: LiveData<Source>
-        get() = _editProfile
 
     fun loadMorePhotos() {
         pageNumber.value?.plus(1)?.let { init(it) }
@@ -85,6 +82,7 @@ class LandingViewModel @ViewModelInject constructor(
     }
 
     fun openEditScreen(source: Source?) {
-        _editProfile.postValue(source)
+        if (source != null)
+            navigator.navigate(deepLinkToEditProfile(source.value))
     }
 }

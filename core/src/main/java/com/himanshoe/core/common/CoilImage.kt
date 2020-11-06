@@ -117,8 +117,6 @@ internal fun MutableState<ImageAsset>.update(drawable: Drawable, @Px width: Int?
                     value = asset
                 }
                 delay(16)
-                //1000 ms / 60 fps = 16.666 ms/fps
-                //TODO: figure out most efficient way to dispaly a gif
             }
         }
     } else {

@@ -9,4 +9,6 @@
     <include app:graph="@navigation/login_navigation" />
 
     <include app:graph="@navigation/landing_navigation" />
+
+    <include app:graph="@navigation/profile_navigation" />
 </navigation>
