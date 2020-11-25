@@ -22,7 +22,6 @@ import androidx.compose.ui.graphics.vector.VectorAsset
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
@@ -56,7 +55,7 @@ fun LoginUI(viewModel: LoginViewModel) {
                 )
                 addSpace(32.dp)
 
-                inputField(KeyboardType.Email, Icons.Filled.Email, emailState, LoginField.EMAIL)
+                inputField(Icons.Filled.Email, emailState, LoginField.EMAIL)
 
                 if (!emailState.value.isEmail() && emailState.value.text.isNotEmpty()) {
                     Text(
@@ -68,7 +67,6 @@ fun LoginUI(viewModel: LoginViewModel) {
                 addSpace()
 
                 inputField(
-                    KeyboardType.Password,
                     (Icons.Filled.RemoveRedEye),
                     passwordState,
                     LoginField.PASSWORD
@@ -116,32 +114,30 @@ fun LoginUI(viewModel: LoginViewModel) {
                 )
             )
         })
-
-
 }
 
 @Composable
 private fun inputField(
-    type: KeyboardType,
     icon: VectorAsset,
     state: MutableState<TextFieldValue>,
     field: LoginField
 ) {
     TextField(
-        keyboardType = type,
+        value = state.value,
         activeColor = Color.Gray,
         modifier = Modifier.fillMaxWidth().border(
             BorderStroke(0.5.dp, Color.Gray),
             shape = RoundedCornerShape(percent = 0)
         ),
-        value = state.value,
-        trailingIcon = { Icon(icon) },
+        trailingIcon = {
+            Icon(asset = icon)
+        },
         visualTransformation = if (field == LoginField.PASSWORD) {
             PasswordVisualTransformation()
         } else {
             VisualTransformation.None
         },
-        onValueChange = { state.value = it }
+        onValueChange = { value -> state.value = value }
     )
 }
 

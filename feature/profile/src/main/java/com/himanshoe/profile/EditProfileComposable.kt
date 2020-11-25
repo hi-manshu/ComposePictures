@@ -4,6 +4,7 @@ import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Save
@@ -18,7 +19,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -37,7 +37,7 @@ fun EditUI(source: String, viewModel: EditProfileViewModel) {
 
         Scaffold(topBar = {
             TopAppBar(modifier = Modifier.fillMaxWidth(), backgroundColor = Color.Black) {
-                Text(
+                BasicText(
                     text = "Edit Profile",
                     style = TextStyle(color = Color.White, fontSize = 16.sp),
                     modifier = Modifier.align(Alignment.CenterVertically).padding(start = 16.dp)
@@ -57,7 +57,7 @@ fun EditUI(source: String, viewModel: EditProfileViewModel) {
                         .background(color = "fdecd2".toColor(), shape = CircleShape)
                         .align(Alignment.Start).clip(CircleShape)
                 ) {}
-                Text(
+                BasicText(
                     text = "Hey,",
                     style = MaterialTheme.typography.h6
                 )
@@ -72,7 +72,7 @@ fun EditUI(source: String, viewModel: EditProfileViewModel) {
                     thickness = 1.dp
                 )
 
-                Text(
+                BasicText(
                     text = "Email",
                     style = MaterialTheme.typography.h6
                 )
@@ -85,7 +85,7 @@ fun EditUI(source: String, viewModel: EditProfileViewModel) {
                     color = Color.Gray,
                     thickness = 1.dp
                 )
-                Text(
+                BasicText(
                     text = "Description",
                     style = MaterialTheme.typography.h6
                 )
@@ -96,7 +96,11 @@ fun EditUI(source: String, viewModel: EditProfileViewModel) {
 
         }, bottomBar = {
             bottomSaveButton {
-                viewModel.saveUser(nameState.value.text,emailState.value.text,descriptionState.value.text)
+                viewModel.saveUser(
+                    nameState.value.text,
+                    emailState.value.text,
+                    descriptionState.value.text
+                )
             }
         })
     }
@@ -106,7 +110,6 @@ fun EditUI(source: String, viewModel: EditProfileViewModel) {
 @Composable
 fun inputField(state: MutableState<TextFieldValue>) {
     TextField(
-        keyboardType = KeyboardType.Text,
         activeColor = Color.Gray,
         modifier = Modifier.fillMaxWidth().border(
             BorderStroke(0.5.dp, Color.Gray),
@@ -121,7 +124,6 @@ fun inputField(state: MutableState<TextFieldValue>) {
 @Composable
 fun inputDescriptionField(state: MutableState<TextFieldValue>) {
     TextField(
-        keyboardType = KeyboardType.Text,
         activeColor = Color.Gray,
         modifier = Modifier.fillMaxWidth().height(150.dp).border(
             BorderStroke(0.5.dp, Color.Gray),
@@ -135,12 +137,12 @@ fun inputDescriptionField(state: MutableState<TextFieldValue>) {
 
 @Composable
 fun textField(value: String) {
-    Text(
+    BasicText(
         modifier = Modifier.fillMaxWidth(),
         text = value,
-        fontSize = 20.sp,
-        style = TextStyle(fontWeight = FontWeight.Bold)
+        style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 20.sp)
     )
+
 }
 
 @Composable
@@ -153,7 +155,7 @@ fun bottomSaveButton(onClick: () -> Unit) {
             text = {
                 Row {
                     Image(Icons.Filled.Save)
-                    Text(text = "Save", modifier = Modifier.padding(start = 12.dp))
+                    BasicText(text = "Save", modifier = Modifier.padding(start = 12.dp))
                 }
             },
             onClick = { onClick() }, backgroundColor = "fdecd2".toColor(),

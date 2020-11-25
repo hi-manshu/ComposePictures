@@ -1,6 +1,5 @@
 package com.himanshoe.core.base
 
-import com.himanshoe.core.util.IResult
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -10,5 +9,5 @@ import kotlinx.coroutines.flow.Flow
 interface IBaseUseCase<in I, out R : Any> {
 
     /** Executes this use case with given input. */
-    suspend operator fun invoke(input: I): Flow<IResult<R>>
+     operator fun invoke(input: I): Flow<R>
 }
