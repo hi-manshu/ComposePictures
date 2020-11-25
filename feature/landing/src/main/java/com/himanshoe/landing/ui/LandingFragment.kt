@@ -29,10 +29,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class LandingFragment : Fragment() {
 
-    companion object {
-        private const val INITIAL_PAGE = 1
-    }
-
     private val viewModel: LandingViewModel by viewModels()
 
     override fun onCreateView(

@@ -1,16 +1,15 @@
 package com.himanshoe.landing.ui.composable
 
 import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonConstants
 import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.livedata.observeAsState
@@ -21,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawOpacity
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -47,18 +47,14 @@ fun ProfileUI(viewModel: LandingViewModel) {
             color = Color.Gray,
             modifier = Modifier.drawOpacity(0.4F).padding(top = 20.dp)
         )
-        Text(
+        BasicText(
             text = user?.name?.capitalize(Locale.ROOT) ?: "",
             modifier = Modifier.align(Alignment.Start).padding(start = 16.dp, top = 20.dp),
-            style = MaterialTheme.typography.h5,
-            fontWeight = FontWeight.Bold,
-            fontSize = 24.sp
+            style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 24.sp),
         )
-        Text(
+        BasicText(
             text = user?.email ?: "",
             modifier = Modifier.align(Alignment.Start).padding(start = 16.dp, top = 10.dp),
-            style = MaterialTheme.typography.body1,
-            fontSize = 14.sp
         )
         Divider(
             thickness = 1.dp,
@@ -83,10 +79,10 @@ fun ProfileUI(viewModel: LandingViewModel) {
             ),
             modifier = Modifier.fillMaxWidth().padding(top = 16.dp)
         ) {
-            Text(
+            BasicText(
+                style = TextStyle(color = Color.White),
                 text = "Logout".toUpperCase(Locale.ROOT),
-                modifier = Modifier.align(Alignment.CenterVertically).padding(start = 16.dp),
-                style = MaterialTheme.typography.body1
+                modifier = Modifier.align(Alignment.CenterVertically),
             )
         }
     }
@@ -98,13 +94,12 @@ fun setDescription(descriptionState: State<String?>, onClick: () -> Unit) {
     if (value?.isEmpty()!!) {
         editCard(title = "Complete Profile", onClick = onClick)
     } else {
-        Text(
+        BasicText(
             text = """" $value """",
             modifier = Modifier.clip(RoundedCornerShape(10.dp))
                 .background(color = "e2e2e2".toColor())
                 .padding(16.dp)
                 .fillMaxWidth(),
-            style = MaterialTheme.typography.body1
         )
         Spacer(modifier = Modifier.height(16.dp))
         editCard(title = "Edit Profile", onClick = onClick)
@@ -123,19 +118,16 @@ private fun editCard(title: String, onClick: () -> Unit) {
                 onClick()
             })
     ) {
-        Text(
+        BasicText(
             text = title,
             modifier = Modifier.align(Alignment.Start).padding(start = 16.dp, top = 20.dp),
-            style = MaterialTheme.typography.h5,
-            fontWeight = FontWeight.Bold,
-            fontSize = 24.sp
+            style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 24.sp),
         )
-        Text(
+        BasicText(
             text = "Click here to edit",
             modifier = Modifier.align(Alignment.Start)
                 .padding(start = 16.dp, top = 10.dp, bottom = 20.dp),
-            style = MaterialTheme.typography.body1,
-            fontSize = 14.sp
+            style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 14.sp),
         )
     }
 }

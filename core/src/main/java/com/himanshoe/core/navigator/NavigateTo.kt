@@ -36,8 +36,7 @@ sealed class NavigateTo {
     data class Action(val direction: NavDirections) : NavigateTo()
 
     /**
-     * To navigate using deep-link in [Uri] format. Use it to navigate between modules. To navigate between screens
-     * within a module use [Direction].
+     * To navigate using deep-link in [Uri] format.
      */
     data class DeepLink(
         val uri: String,

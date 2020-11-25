@@ -1,11 +1,11 @@
 package com.himanshoe.login.ui.composable
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
@@ -49,7 +49,7 @@ fun LoginUI(viewModel: LoginViewModel) {
 
                 addSpace()
 
-                Text(
+                BasicText(
                     text = "Welcome to,\nPhoto Collector",
                     style = MaterialTheme.typography.h4
                 )
@@ -58,7 +58,7 @@ fun LoginUI(viewModel: LoginViewModel) {
                 inputField(Icons.Filled.Email, emailState, LoginField.EMAIL)
 
                 if (!emailState.value.isEmail() && emailState.value.text.isNotEmpty()) {
-                    Text(
+                    BasicText(
                         emailState.value.text + " is not a valid email",
                         style = TextStyle(color = Color.Red)
                     )
@@ -80,7 +80,7 @@ fun LoginUI(viewModel: LoginViewModel) {
 
                 addSpace(8.dp)
 
-                Text(
+                BasicText(
                     text = "or",
                     modifier = Modifier.fillMaxWidth().padding(start = 16.dp),
                     style = TextStyle(
@@ -100,12 +100,11 @@ fun LoginUI(viewModel: LoginViewModel) {
         },
         bottomBar = {
 
-            Text(
+            BasicText(
                 text = "Made with ❤ in India",
                 modifier = Modifier.fillMaxWidth().height(50.dp)
                     .clip(RoundedCornerShape(topLeft = 40.dp, topRight = 40.dp))
                     .background("4D73F6".toColor()).padding(top = 12.dp),
-                textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.body1.merge(
                     TextStyle(
                         color = Color.White,
@@ -155,10 +154,10 @@ private fun buttonLogin(text: String, color: Color = Color.Black, onClick: () ->
         ),
         modifier = Modifier.fillMaxWidth()
     ) {
-        Text(
+        BasicText(
             text = text.toUpperCase(Locale.ROOT),
             modifier = Modifier.align(Alignment.CenterVertically).padding(start = 16.dp),
-            style = MaterialTheme.typography.body1
+            style = TextStyle(color = Color.White),
         )
     }
 }

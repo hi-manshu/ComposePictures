@@ -51,7 +51,7 @@ fun EditUI(source: String, viewModel: EditProfileViewModel) {
                     .padding(16.dp)
             ) {
                 CoilImage(
-                    model = user?.displayUrl ?: "",
+                    model = user.displayUrl,
                     modifier = Modifier.preferredSize(100.dp)
                         .fillMaxWidth()
                         .background(color = "fdecd2".toColor(), shape = CircleShape)

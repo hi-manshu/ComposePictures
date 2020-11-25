@@ -47,7 +47,7 @@ fun CoilImage(
         if (width == -1) width = height
         if (height == -1) height = width
 
-        val image = remember<MutableState<ImageAsset>> { mutableStateOf(ImageAsset(width,height)) }
+        val image = remember { mutableStateOf(ImageAsset(width,height)) }
         val context = ContextAmbient.current
         var animationJob : Job? = remember { null }
         onCommit(model) {
