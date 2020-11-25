@@ -2,8 +2,9 @@ ext {
     appMinSdkVersion = 21
     appTargetSdkVersion = 30
     appCompileSdkVersion = 30
-    composeVersion = "1.0.0-alpha06"
-    navComposeVersion = "1.0.0-alpha01"
+    composeVersion = "1.0.0-alpha07"
+    navComposeVersion = "1.0.0-alpha02"
+    navComposePagingVersion = "1.0.0-alpha02"
     navVersion = "2.3.1"
     dataStoreVersion = "1.0.0-alpha02"
     kotlinVersion = "1.4.10"
@@ -16,7 +17,9 @@ ext {
             composeCore      : "androidx.compose.material:material-icons-core:$composeVersion",
             composeExtended  : "androidx.compose.material:material-icons-extended:$composeVersion",
             composeLiveData  : "androidx.compose.runtime:runtime-livedata:$composeVersion",
-            composeNavigation: "androidx.navigation:navigation-compose:$navComposeVersion"
+            composeNavigation: "androidx.navigation:navigation-compose:$navComposeVersion",
+            composePaging    : "androidx.paging:paging-compose:$navComposePagingVersion"
+
     ]
 
     library = [

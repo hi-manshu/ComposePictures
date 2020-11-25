@@ -58,6 +58,7 @@ dependencies {
     api jetpackCompose.composeExtended
     api jetpackCompose.composeLiveData
     api jetpackCompose.composeNavigation
+    api jetpackCompose.composePaging
 
     implementation library.appCompat
     implementation library.material

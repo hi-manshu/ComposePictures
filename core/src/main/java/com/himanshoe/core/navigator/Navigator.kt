@@ -6,11 +6,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
-import com.himanshoe.core.navigator.NavigateTo
 import com.himanshoe.core.navigator.NavigateTo.*
 import com.himanshoe.core.navigator.event.Event
 import com.himanshoe.core.navigator.event.consume
-import dagger.Module
 import javax.inject.Inject
 
 /**
@@ -46,7 +44,7 @@ class Navigator @Inject constructor() {
     }
 
     /**
-     * To observe the [Navigator], uses [NavController] to navigate to specific destination.
+     * To observe the [Navigator], uses NavController to navigate to specific destination.
      */
     fun navigateBy(fragment: Fragment) {
         navLiveData.observe(fragment, { event ->

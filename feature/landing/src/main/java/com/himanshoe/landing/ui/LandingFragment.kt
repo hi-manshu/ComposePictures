@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.*
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -29,10 +29,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class LandingFragment : Fragment() {
 
-    companion object {
-        private const val INITIAL_PAGE = 1
-    }
-
     private val viewModel: LandingViewModel by viewModels()
 
     override fun onCreateView(
@@ -46,7 +42,7 @@ class LandingFragment : Fragment() {
                     topBar = {
                         TopAppBar(backgroundColor = Color.Black,
                             content = {
-                                Text(
+                                BasicText(
                                     text = "Photo Collector",
                                     modifier = Modifier.align(Alignment.CenterVertically)
                                         .padding(start = 16.dp),
@@ -70,7 +66,12 @@ class LandingFragment : Fragment() {
                             items.forEach { screen ->
                                 BottomNavigationItem(
                                     icon = { Icon(screen.icon) },
-                                    label = { Text(stringResource(screen.resourceId)) },
+                                    label = {
+                                        BasicText(
+                                            stringResource(screen.resourceId),
+                                            style = TextStyle(color = Color.White)
+                                        )
+                                    },
                                     selected = currentRoute == screen.route,
                                     onClick = {
                                         navController.popBackStack(
@@ -102,7 +103,6 @@ class LandingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.navigator.navigateBy(this)
-        viewModel.init(INITIAL_PAGE)
         viewModel.getUser()
     }
 }

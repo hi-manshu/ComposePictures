@@ -7,9 +7,9 @@ import androidx.annotation.Px
 import androidx.compose.foundation.Image
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.WithConstraints
 import androidx.compose.ui.graphics.ImageAsset
 import androidx.compose.ui.graphics.asImageAsset
+import androidx.compose.ui.layout.WithConstraints
 import androidx.compose.ui.platform.ContextAmbient
 import androidx.compose.ui.unit.Dp.Companion.Infinity
 import androidx.compose.ui.unit.IntSize.Companion.Zero
@@ -47,7 +47,7 @@ fun CoilImage(
         if (width == -1) width = height
         if (height == -1) height = width
 
-        val image = remember<MutableState<ImageAsset>> { mutableStateOf(ImageAsset(width,height)) }
+        val image = remember { mutableStateOf(ImageAsset(width,height)) }
         val context = ContextAmbient.current
         var animationJob : Job? = remember { null }
         onCommit(model) {
