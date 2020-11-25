@@ -26,7 +26,7 @@ import com.himanshoe.landing.ui.LandingViewModel
 fun PhotoUI(viewModel: LandingViewModel) {
     val photos: LazyPagingItems<PhotoResponse> =
         viewModel.getPhotoPagination().collectAsLazyPagingItems()
-    LazyColumn {
+    LazyColumn(modifier = Modifier.fullScreen()) {
         items(photos) { photo ->
             photo?.downloadUrl?.let {
                 CoilImage(
