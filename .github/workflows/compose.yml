@@ -1,6 +1,7 @@
 name: Compose
 
 on: push
+     branches: [ master ]
 
 jobs:
   build:
@@ -17,6 +18,9 @@ jobs:
 
       - name: Grant Permission to Execute
         run: chmod +x gradlew
+
+      - name: "detekt"
+        uses: natiginfo/action-detekt-all@1.15.0-RC1
 
       - name: Run Lint
         run: ./gradlew lint
