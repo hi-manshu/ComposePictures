@@ -2,6 +2,7 @@ package com.himanshoe.login.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -84,6 +85,7 @@ class LoginFragment : Fragment() {
                     val credential = GoogleAuthProvider.getCredential(result.response, null)
                     auth.signInWithCredential(credential)
                         .addOnCompleteListener { task ->
+                            Log.d("sdfdsfsd",task.exception?.message.toString())
                             if (task.isSuccessful) {
                                 val user = auth.currentUser
                                 viewModel.setUser(user,Source.GOOGLE)
@@ -125,6 +127,7 @@ class LoginFragment : Fragment() {
                 val account = task.getResult(ApiException::class.java)!!
                 viewModel.getUserFromGoogleId(account.idToken)
             } catch (e: ApiException) {
+                Log.d("sdfsdf",e.message.toString())
             }
         }
     }

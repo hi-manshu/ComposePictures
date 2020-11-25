@@ -32,6 +32,7 @@ class LandingFragment : Fragment() {
     companion object {
         private const val INITIAL_PAGE = 1
     }
+
     private val viewModel: LandingViewModel by viewModels()
 
     override fun onCreateView(
@@ -69,7 +70,12 @@ class LandingFragment : Fragment() {
                             items.forEach { screen ->
                                 BottomNavigationItem(
                                     icon = { Icon(screen.icon) },
-                                    label = { BasicText(stringResource(screen.resourceId)) },
+                                    label = {
+                                        BasicText(
+                                            stringResource(screen.resourceId),
+                                            style = TextStyle(color = Color.White)
+                                        )
+                                    },
                                     selected = currentRoute == screen.route,
                                     onClick = {
                                         navController.popBackStack(

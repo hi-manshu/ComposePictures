@@ -1,10 +1,10 @@
 package com.himanshoe.landing.data.apiHelper
 
-import android.util.Log
 import androidx.paging.PagingSource
 import com.himanshoe.landing.data.response.PhotoResponse
 import com.himanshoe.landing.domain.PhotoRepository
 import javax.inject.Inject
+
 
 class PhotoSource @Inject constructor(private val photoRepository: PhotoRepository) :
     PagingSource<Int, PhotoResponse>() {
