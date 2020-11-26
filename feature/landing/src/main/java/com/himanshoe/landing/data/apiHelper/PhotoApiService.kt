@@ -7,7 +7,7 @@ import retrofit2.http.Query
 interface PhotoApiService {
 
     @GET("list")
-    suspend fun getAppConfig(
+    suspend fun getPhotos(
         @Query("page") pageNumber: Int,
         @Query("limit") limit: Int = 100
     ): List<PhotoResponse>

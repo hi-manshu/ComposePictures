@@ -1,7 +1,7 @@
 package com.himanshoe.landing.di
 
 import com.himanshoe.landing.data.apiHelper.IPhotoRepository
-import com.himanshoe.landing.domain.PhotoRepository
+import com.himanshoe.landing.data.apiHelper.PhotoRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
