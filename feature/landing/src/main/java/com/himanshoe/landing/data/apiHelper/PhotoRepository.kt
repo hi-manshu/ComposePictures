@@ -1,4 +1,4 @@
-package com.himanshoe.landing.domain
+package com.himanshoe.landing.data.apiHelper
 
 import com.himanshoe.core.base.IBaseRepository
 import com.himanshoe.landing.data.response.PhotoResponse

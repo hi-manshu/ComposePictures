@@ -3,6 +3,7 @@ package com.himanshoe.landing.ui.composable
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -18,31 +19,43 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import androidx.paging.compose.LazyPagingItems
+import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import com.himanshoe.core.common.CoilImage
 import com.himanshoe.core.extension.fullScreen
 import com.himanshoe.core.extension.toColor
-import com.himanshoe.landing.data.response.PhotoResponse
 import com.himanshoe.landing.ui.LandingViewModel
 
 
 @Composable
 fun PhotoUI(viewModel: LandingViewModel) {
-    val photos: LazyPagingItems<PhotoResponse> =
-        viewModel.getPhotoPagination().collectAsLazyPagingItems()
-    LazyColumn(modifier = Modifier.fullScreen()) {
+
+    val photos = viewModel.getPhotoPagination().collectAsLazyPagingItems()
+
+    LazyColumn(modifier = Modifier.fillMaxWidth().fillMaxHeight()) {
+
         items(photos) { photo ->
             Box {
                 photo?.downloadUrl?.let { loadImage(it) }
                 BasicText(
                     style = TextStyle(fontWeight = FontWeight.Bold),
-                    text = "Clicked by: "+ photo?.author.toString(),
+                    text = "Clicked by: " + photo?.author.toString(),
                     modifier = Modifier.padding(top = 8.dp, start = 4.dp)
                         .background(color = "#80FFFFFF".toColor())
                         .padding(4.dp)
                 )
+            }
+
+        }
+        photos.apply {
+            when {
+                loadState.refresh is LoadState.Loading -> item {
+                    showProgress()
+                }
+                loadState.append is LoadState.Loading -> {
+                    item { showProgress() }
+                }
             }
         }
     }
@@ -90,4 +103,3 @@ fun showProgress() {
         )
     }
 }
-
